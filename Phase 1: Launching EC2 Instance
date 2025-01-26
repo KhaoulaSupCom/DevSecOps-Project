@@ -1,0 +1,9 @@
+Setting Up EC2
+EC2 Instance Launch:
+Launched an EC2 instance with Ubuntu OS for the project.
+2. Instance Type Selection:
+
+Choose t2.large instance (2 vCPUs, 8 GB RAM) to efficiently handle the workload.
+3. Elastic IP Association:
+
+Associated an Elastic IP to ensure a static public IP address for consistent access.
