@@ -1,0 +1,41 @@
+Install Docker: Set up Docker on the EC2 instance to containerize the application. By using the following commands
+sudo apt-get update
+sudo apt-get install docker.io -y
+sudo usermod -aG docker $USER
+newgrp docker
+
+The command 
+sudo usermod -aG docker $USER 
+adds the current user to the docker group.
+It allows the user to run Docker commands without needing sudo privileges every time.
+
+Run Docker Container:
+Built and ran the Docker container to deploy the application securely and efficiently.
+
+docker build -t netflix .
+docker run -d --name netflix -p 8081:80 netflix:latest
+
+Rebuild Docker Image with TMDB API Key
+
+TMDB?
+TMDB (The Movie Database) is an online database that provides movie and TV show data through an API. We can use it to fetch information like movie titles, ratings, cast, etc.
+How to Get TMDB API Key:
+Go to TMDB.
+Create an account or log in.
+Navigate to Account Settings > API.
+Generate a new API key.
+
+3. Why Use TMDB API Key?
+
+The API key is required to authenticate and get access to TMDB data.
+Without it, our requests will be rejected.
+4. Difference With and Without API Key:
+
+With API Key: Full access to detailed movie information (e.g., ratings, cast, genres).
+Without API Key: Limited or no access to data, and the API will return an error.
+5. Rebuild Docker Image with API Key:
+
+Once we have the API key, include it in Docker container to enable access to TMDB data when the app runs.
+Rebuild the Docker image after configuring the API key in application.
+ 
+                 docker build --build-arg TMDB_V3_API_KEY=<your-api-key> -t netflix .
